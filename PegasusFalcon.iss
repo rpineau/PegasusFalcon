@@ -40,14 +40,22 @@ DirExistsWarning=no
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
+[Dirs]
+Name: "{app}\Plugins\RotatorPlugIns";
+Name: "{app}\Plugins64\RotatorPlugIns";
+
 [Files]
 ; WIll also need to customise these!
-Source: "rotatorlist PegasusFalcon.txt"; DestDir: "{app}\Miscellaneous Files"; Flags: ignoreversion
-Source: "libPegasusFalcon\Release\libPegasusFalcon.dll"; DestDir: "{app}\Plugins\RotatorPlugIns"; Flags: ignoreversion
-Source: "PegasusFalcon.ui"; DestDir: "{app}\Plugins\RotatorPlugIns"; Flags: ignoreversion
-Source: "PegasusAstro.png"; DestDir: "{app}\Plugins\RotatorPlugIns"; Flags: ignoreversion
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-; msgBox('Do you want to install MyProg.exe to ' + ExtractFilePath(CurrentFileName) + '?', mbConfirmation, MB_YESNO)
+Source: "rotatorlist PegasusFalcon.txt";                        DestDir: "{app}\Miscellaneous Files"; Flags: ignoreversion
+Source: "rotatorlist PegasusFalcon.txt";                        DestDir: "{app}\Miscellaneous Files"; Flags: ignoreversion; DestName: "rotatorlist64 PegasusFalcon.txt"
+; 32 bit
+Source: "libPegasusFalcon\Win32\Release\libPegasusFalcon.dll";  DestDir: "{app}\Plugins\RotatorPlugIns"; Flags: ignoreversion
+Source: "PegasusFalcon.ui";                                     DestDir: "{app}\Plugins\RotatorPlugIns"; Flags: ignoreversion
+Source: "PegasusAstro.png";                                     DestDir: "{app}\Plugins\RotatorPlugIns"; Flags: ignoreversion
+; 64 bit
+Source: "libPegasusFalcon\x64\Release\libPegasusFalcon.dll";    DestDir: "{app}\Plugins64\RotatorPlugIns"; Flags: ignoreversion; Check: DirExists(ExpandConstant('{app}\Plugins64\RotatorPlugIns'))
+Source: "PegasusFalcon.ui";                                     DestDir: "{app}\Plugins64\RotatorPlugIns"; Flags: ignoreversion; Check: DirExists(ExpandConstant('{app}\Plugins64\RotatorPlugIns'))
+Source: "PegasusAstro.png";                                     DestDir: "{app}\Plugins64\RotatorPlugIns"; Flags: ignoreversion; Check: DirExists(ExpandConstant('{app}\Plugins64\RotatorPlugIns'))
 
 [Code]
 {* Below is a function to read TheSkyXInstallPath.txt and confirm that the directory does exist
