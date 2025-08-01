@@ -34,7 +34,7 @@
 
 // #define PLUGIN_DEBUG 3
 
-#define DRIVER_VERSION 1.0
+#define DRIVER_VERSION 1.01
 #define PLUGIN_ID   2
 
 #define SERIAL_BUFFER_SIZE 256
